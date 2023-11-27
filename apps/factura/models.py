@@ -10,8 +10,11 @@ class Empresa(models.Model):
 
 
 class Factura(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE , related_name='user')
-    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name='facturas')
+    user = models.ForeignKey(User,
+                              on_delete=models.CASCADE ,
+                                related_name='user')
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE,
+                                 related_name='empresa')
     precio_total = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):

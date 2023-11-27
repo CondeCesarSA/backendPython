@@ -12,7 +12,7 @@
 {% block content %}
     <h1>Bienvenido lista de usuario</h1>
     {% for user in object_list %}
-        <li>{{user.dni}} -- {{user.nombre}} </li>
+        <li>{{user.dni}} -- {{user.telefono}} --{{user.direccion}} -- {{user.tarjeta}} </li>
     {% endfor %}
     
 {% endblock %}
