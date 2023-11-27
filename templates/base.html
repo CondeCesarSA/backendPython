@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tienda Electrónica{% endblock %}</title>
+</head>
+<body>
+    <h2>{% block heading %}Inicio{% endblock %}</h2>
+    {% block nav%}
+    <nav>
+        <ul>
+            <li><a href="#referencia1">Inicio</a></li>
+            <li><a href="#referencia2">Registrarse</a></li>
+            <li><a href="#referencia3">Logearse</a></li>
+        </ul>
+    </nav>
+    {% endblock%}
+    <!-- Contenido de la página -->
+    {% block content %}{% endblock %}
+    <footer>
+        <p>Creado por Conde César Santiago Andrés para la materia Backend</p>
+    </footer>
+</body>
+</html>
