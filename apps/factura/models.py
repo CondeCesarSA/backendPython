@@ -6,7 +6,7 @@ class Empresa(models.Model):
     cuit = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.nombre
+        return f"Nombre de empresa: {self.nombre} - CUIT: {self.cuit}"
 
 
 class Factura(models.Model):
@@ -18,4 +18,4 @@ class Factura(models.Model):
     precio_total = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f"Factura #{self.id}"
+        return f"Factura #{self.id} - Usuario: {self.user.username} - Empresa: {self.empresa.nombre} - Precio Total: ${self.precio_total}"

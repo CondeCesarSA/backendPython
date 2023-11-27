@@ -3,16 +3,25 @@ from django.db import models
 class Manufacturer(models.Model):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 class Physical(models.Model):
     package = models.CharField(max_length=255)
     mount = models.CharField(max_length=255)
     number_of_pins = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.package} - {self.mount} - {self.number_of_pins} pins"
 
 class Dimensions(models.Model):
     depth = models.FloatField()
     height = models.FloatField()
     length = models.FloatField()
     width = models.FloatField()
+
+    def __str__(self):
+        return f"{self.length} x {self.width} x {self.height} mm (Depth x Width x Height)"
 
 class MeasureBase(models.Model):
     unit = models.CharField(max_length=255)
@@ -21,6 +30,8 @@ class MeasureBase(models.Model):
     class Meta:
         abstract = True
 
+    def __str__(self):
+        return f"{self.value} {self.unit}"
 
 class UnitResistance(MeasureBase):
     UNIT_CHOICES = [
@@ -33,7 +44,6 @@ class UnitResistance(MeasureBase):
         ('Microohmios', 'µΩ'),
         ('Nanoohmios', 'nΩ'),
         ('Picoohmios', 'pΩ'),
-        # Agrega otras opciones según sea necesario
     ]
     unit = models.CharField(max_length=12, choices=[(label, abbrev) for label, abbrev in UNIT_CHOICES])
 
@@ -59,14 +69,19 @@ class UnitCapacitance(MeasureBase):
     unit = models.CharField(max_length=12, choices=[(label, abbrev) for label, abbrev in UNIT_CHOICES])
 
 class Technical(models.Model):
-    pines = models.IntegerField(1)
+    pines = models.IntegerField(default=1)
     resistance = models.ForeignKey(UnitResistance, on_delete=models.CASCADE, null=True, blank=True)
     capacitance = models.ForeignKey(UnitCapacitance, on_delete=models.CASCADE, null=True, blank=True)
     voltage = models.ForeignKey(UnitVolt, on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+        return f"Technical: Pines={self.pines}, Resistance={self.resistance}, Capacitance={self.capacitance}, Voltage={self.voltage}"
+
 class Distributor(models.Model):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
 
 class Component(models.Model):
     name = models.CharField(max_length=255)
@@ -77,4 +92,6 @@ class Component(models.Model):
     physical = models.OneToOneField(Physical, on_delete=models.CASCADE, related_name='physical')
     manufacturer = models.OneToOneField(Manufacturer, on_delete=models.CASCADE, related_name='manufacturer')
     distributor = models.OneToOneField(Distributor, on_delete=models.CASCADE, related_name='distributor')
-    
+
+    def __str__(self):
+        return f"Component: {self.name}, Stock={self.stock}, MOQ={self.moq}, Technical={self.technical}, Dimensions={self.dimensions}, Physical={self.physical}, Manufacturer={self.manufacturer}, Distributor={self.distributor}"

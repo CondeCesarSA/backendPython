@@ -45,7 +45,12 @@ class Tarjeta(models.Model):
     banco_emisor = models.CharField(max_length=20, choices=Banco.choices)
     tipo_tarjeta  = models.CharField(max_length=20, choices=TipoTarjeta.choices)
 
+    def __str__(self):
+        return f"{self.banco_emisor} - {self.tipo_tarjeta}"
+
 class User(Persona):
     tarjeta  = models.ForeignKey(Tarjeta, on_delete=models.CASCADE,related_name="tarjeta")
     registrado  = models.DateField()
 
+    def __str__(self):
+        return f"Usuario: {self.apellido}, DNI: {self.dni}, Registrado: {self.registrado}, Tarjeta: {self.tarjeta}"
