@@ -43,4 +43,4 @@ class Persona(models.Model):
     telefono = models.ForeignKey(Telefono, on_delete=models.CASCADE, related_name="telefono")
 
     def __str__(self):
-        return f"{self.apellido}, DNI: {self.dni}, Nac.: {self.nacionalidad}, Dir.: {self.direccion}, Tel.: {self.telefono}"
+        return f"Apellido:{self.apellido}, DNI: {self.dni}, Nac.: {self.nacionalidad}, Dir.: {self.direccion}, Tel.: {self.telefono}"

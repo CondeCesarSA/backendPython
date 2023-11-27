@@ -11,8 +11,11 @@
 
 {% block content %}
     <h1>Bienvenido lista de usuario</h1>
+    <a href="{% url 'new' %}">Crear Nuevo Usuario <a>
     {% for user in object_list %}
-        <li>{{user.dni}} -- {{user.telefono}} --{{user.direccion}} -- {{user.tarjeta}} </li>
+        <li>{{user.dni}} -- {{user.telefono}} --{{user.direccion}} -- {{user.tarjeta}}  </li>
+        <a href="{% url 'edit' user.id %}">Edit</a>
+        <a href="{% url 'delete' user.id %}">Delete</a>
     {% endfor %}
     
 {% endblock %}
