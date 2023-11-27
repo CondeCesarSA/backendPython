@@ -35,6 +35,7 @@ class Telefono(models.Model):
         return f"{self.codArea}-{self.prefijo}-{self.numero}"
 
 class Persona(models.Model):
+    nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
     dni = models.IntegerField()
     fechaNacimiento = models.DateField()
@@ -43,4 +44,4 @@ class Persona(models.Model):
     telefono = models.ForeignKey(Telefono, on_delete=models.CASCADE, related_name="telefono")
 
     def __str__(self):
-        return f"Apellido:{self.apellido}, DNI: {self.dni}, Nac.: {self.nacionalidad}, Dir.: {self.direccion}, Tel.: {self.telefono}"
+        return f"Nombre: ", {self.nombre}, "Apellido:{self.apellido}, DNI: {self.dni}, Nac.: {self.nacionalidad}, Dir.: {self.direccion}, Tel.: {self.telefono}"

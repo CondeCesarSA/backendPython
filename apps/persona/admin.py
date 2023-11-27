@@ -28,4 +28,4 @@ class TelefonoAdmin(admin.ModelAdmin):
 # Asegúrate de que la clase Persona también esté registrada en el admin si no lo has hecho ya
 @admin.register(Persona)
 class PersonaAdmin(admin.ModelAdmin):
-    list_display = ('apellido', 'dni', 'fechaNacimiento', 'nacionalidad', 'direccion', 'telefono',)
+    list_display = ('nombre', 'apellido', 'dni', 'fechaNacimiento', 'nacionalidad', 'direccion', 'telefono',)

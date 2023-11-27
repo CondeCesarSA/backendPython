@@ -53,4 +53,4 @@ class User(Persona):
     registrado = models.DateField()
 
     def __str__(self):
-        return f" Apellido: {self.apellido}, DNI: {self.dni}, Fecha de Nacimiento: {self.fechaNacimiento}, Nacionalidad: {self.nacionalidad}, Dirección: {self.direccion}, Teléfono: {self.telefono}, Registrado: {self.registrado}, Tarjeta: {self.tarjeta}"
+        return f"Nombre: {self.nombre} Apellido: {self.apellido}, DNI: {self.dni}, Fecha de Nacimiento: {self.fechaNacimiento}, Nacionalidad: {self.nacionalidad}, Dirección: {self.direccion}, Teléfono: {self.telefono}, Registrado: {self.registrado}, Tarjeta: {self.tarjeta}"
