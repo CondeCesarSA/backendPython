@@ -13,18 +13,19 @@ class Banco(models.TextChoices):
     PATAGONIA = 'Patagonia'
     COLUMBIA = 'Columbia'
 
-    # BANCOS_CHOICES = [
-    #     (NACION_ARGENTINA, 'Banco de la Nación Argentina (BNA)'),
-    #     (MACRO, 'Banco Macro'),
-    #     (GALICIA, 'Banco Galicia'),
-    #     (SANTANDER_RIO, 'Banco Santander Río'),
-    #     (BBVA_ARGENTINA, 'Banco BBVA Argentina'),
-    #     (HIPOTECARIO, 'Banco Hipotecario'),
-    #     (CIUDAD, 'Banco Ciudad'),
-    #     (ITAU_ARGENTINA, 'Banco Itaú Argentina'),
-    #     (PATAGONIA, 'Banco Patagonia'),
-    #     (COLUMBIA, 'Banco Columbia'),
-    # ]
+    
+    BANCOS_CHOICES = [
+        (NACION_ARGENTINA, 'Banco de la Nación Argentina (BNA)'),
+        (MACRO, 'Banco Macro'),
+        (GALICIA, 'Banco Galicia'),
+        (SANTANDER_RIO, 'Banco Santander Río'),
+        (BBVA_ARGENTINA, 'Banco BBVA Argentina'),
+        (HIPOTECARIO, 'Banco Hipotecario'),
+        (CIUDAD, 'Banco Ciudad'),
+        (ITAU_ARGENTINA, 'Banco Itaú Argentina'),
+        (PATAGONIA, 'Banco Patagonia'),
+        (COLUMBIA, 'Banco Columbia'),
+    ]
 
     # banco = models.CharField(max_length=20, choices=BANCOS_CHOICES)
 
@@ -42,15 +43,16 @@ class TipoTarjeta(models.TextChoices):
     ARGENCARD = 'Argencard'
 
 class Tarjeta(models.Model):
-    banco_emisor = models.CharField(max_length=20, choices=Banco.choices)
-    tipo_tarjeta  = models.CharField(max_length=20, choices=TipoTarjeta.choices)
+    banco_emisor = models.CharField(max_length=365, choices=Banco.choices)
+    tipo_tarjeta  = models.CharField(max_length=365, choices=TipoTarjeta.choices)
 
     def __str__(self):
         return f"{self.banco_emisor} - {self.tipo_tarjeta}"
+
 
 class User(Persona):
     tarjeta = models.ForeignKey(Tarjeta, on_delete=models.CASCADE, related_name="tarjeta")
     registrado = models.DateField()
 
     def __str__(self):
-        return f"Nombre: {self.nombre} Apellido: {self.apellido}, DNI: {self.dni}, Fecha de Nacimiento: {self.fechaNacimiento}, Nacionalidad: {self.nacionalidad}, Dirección: {self.direccion}, Teléfono: {self.telefono}, Registrado: {self.registrado}, Tarjeta: {self.tarjeta}"
+        return f"Nombre: {self.nombre} Apellido: {self.apellido}, DNI: {self.dni}, Fecha de Nacimiento: {self.fecha_nacimiento}, Pais: {self.pais}, Dirección: {self.direccion}, Teléfono: {self.telefono}, Registrado: {self.registrado}, Tarjeta: {self.tarjeta}"

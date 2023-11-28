@@ -12,8 +12,12 @@
     <nav>
         <ul>
             <li><a href="#referencia1">Inicio</a></li>
-            <li><a href="#referencia2">Registrarse</a></li>
-            <li><a href="#referencia3">Logearse</a></li>
+            {% if request.user.is_authenticated %}
+                <li><a href="#referencia3">Salir</a></li>
+            {% else %}
+                <li><a href="#referencia3">Ingresar</a></li>
+                <li><a href="#referencia3">Registrarse</a></li>
+            {% endif %}
         </ul>
     </nav>
     {% endblock%}

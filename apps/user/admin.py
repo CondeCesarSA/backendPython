@@ -16,4 +16,4 @@ class TarjetaAdmin(admin.ModelAdmin):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('apellido', 'dni', 'fechaNacimiento', 'nacionalidad', 'direccion', 'telefono', 'tarjeta', 'registrado',)
+    list_display = ('apellido', 'dni', 'fecha_nacimiento', 'pais', 'direccion', 'telefono', 'tarjeta', 'registrado',)

@@ -1,7 +1,3 @@
-
-
-# Register your models here.
-# admin.py
 from django.contrib import admin
 from apps.persona.models import Pais, Provincia, Localidad, Direccion, Telefono, Persona
 
@@ -28,4 +24,4 @@ class TelefonoAdmin(admin.ModelAdmin):
 # Asegúrate de que la clase Persona también esté registrada en el admin si no lo has hecho ya
 @admin.register(Persona)
 class PersonaAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'apellido', 'dni', 'fechaNacimiento', 'nacionalidad', 'direccion', 'telefono',)
+    list_display = ('nombre', 'apellido', 'dni', 'fecha_nacimiento', 'pais', 'direccion', 'telefono',)
